@@ -1,0 +1,68 @@
+<div class="columns is-mobile is-centered">
+  <div class="card is-centered column is-half is-mobile is-centered">
+    <div class="card-content">
+      <p class="title">
+        <%= @gossip.title %>
+      </p>
+      <p class="subtitle">
+        Auteur : <%= link_to user_path(@gossip.user) do%><%=@gossip.user.first_name + ' ' +   @gossip.user.last_name%><%end%>
+      </p>
+      <p><%= @gossip.content%></p>
+    </div>
+    <footer class="card-footer">
+      <p class="card-footer-item">
+      <span>
+        <%= link_to 'Edit', edit_gossip_path %>
+      </span>
+      </p>
+      <p class="card-footer-item">
+      <span>
+        <%= link_to 'Delete', @gossip, method: :delete %>
+      </span>
+      </p>
+
+
+    </footer>
+  </div>
+</div>
+
+<%= link_to 'Creer un commentaire', new_gossip_review_path(@gossip) %>
+<div class="container m-6  columns is-mobile is-multiline is-centered">
+  <% @gossip.reviews.each do |review| %>
+    <div class="card m-3 column is-half is-mobile is-centered">
+      <div class="card-content">
+        <p class="title">
+          <%= review.content%>
+        </p>
+      </div>
+      <footer class="card-footer">
+        <p class="card-footer-item">
+      <span>
+        <%= link_to 'Update', edit_gossip_review_path(@gossip, review) %>
+      </span>
+        </p>
+        <p class="card-footer-item">
+      <span>
+        <%= link_to 'Delete', gossip_review_path(@gossip, review), method: :delete %>
+      </span>
+        </p>
+      </footer>
+    </div>
+  <% end %>
+</div>
+
+<!-- app/views/posts/show.html.erb -->
+
+<%#= form_tag gossip_review_path(@gossip.id, review.id), method: "delete" do %>
+  <%#= submit_tag "Delete Comment" %>
+<%# end %>
+
+<%= form_tag gossip_reviews_path(@gossip.id) do %>
+
+
+  <%= label_tag 'content' %>
+  <%= text_field_tag 'review[content]', @review.content %>
+  <br /> <br />
+
+  <%= submit_tag "Add Comment" %>
+<% end %>

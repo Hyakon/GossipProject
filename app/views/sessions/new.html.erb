@@ -1,0 +1,9 @@
+<%= form_tag sessions_path do %>
+  <%= label_tag 'Email' %>
+  <%= text_field_tag 'session[email]' %>
+
+  <%= label_tag 'Password' %>
+  <%= text_field_tag 'session[password]' %>
+
+  <%= submit_tag "Sign in" %>
+<% end %>

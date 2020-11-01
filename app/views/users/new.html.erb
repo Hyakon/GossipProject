@@ -1,0 +1,33 @@
+<%= form_tag @user do %>
+
+  <%= label_tag 'Prenom' %>
+  <%= text_field_tag 'user[first_name]', @user.first_name %>
+  <br>
+  <%= label_tag 'Nom' %>
+  <%= text_field_tag 'user[last_name]', @user.last_name %>
+  <br>
+
+  <%= label_tag 'Description' %>
+  <%= text_field_tag 'user[description]', @user.description %>
+  <br>
+
+  <%= label_tag 'Email' %>
+  <%= text_field_tag 'user[email]', @user.email %>
+  <br>
+
+  <%= label_tag 'Age' %>
+  <%= text_field_tag 'user[age]', @user.age %>
+  <br>
+
+  <%= label_tag 'password'%>
+  <%= text_field_tag 'user[password]', @user.password %>
+  <br>
+
+  <%= label_tag 'City' %>
+  <%= select_tag 'user[city_id]', options_from_collection_for_select(City.all, 'id', 'name') %>
+
+  <br>
+  <%= submit_tag "Sign up" %>
+<% end %>
+
+hello

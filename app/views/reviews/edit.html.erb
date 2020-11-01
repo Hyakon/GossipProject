@@ -1,0 +1,11 @@
+<%= form_tag gossip_review_path(@gossip.id), method: :put do %>
+
+
+  <%= label_tag 'content' %>
+  <%= text_field_tag 'review[content]', @review.content %>
+  <br /> <br />
+
+  <%= submit_tag "Edit Comment" %>
+<% end %>
+<%= select_tag 'ville', options_from_collection_for_select(City.all, 'id','name', 2) %>
+<%= select_tag 'ville', options_from_collection_for_select(City.all, 'id','name', 4) %>

@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
     @gossip = Gossip.find(params[:gossip_id])
     # @review = Review.new(review_params)
     @review = @gossip.reviews.build(review_params)
-    @review.user_id = 11
+    @review.user_id = current_user.id
     if @review.save
       flash.notice = 'comment added'
       redirect_to @gossip

@@ -10,7 +10,7 @@ class GossipsController < ApplicationController
 
   def create
     @gossip = Gossip.new(gossip_params)
-    @gossip.user_id = 1
+    @gossip.user_id = current_user.id
     if @gossip.save
       flash.notice = "Gossip Created"
       redirect_to @gossip

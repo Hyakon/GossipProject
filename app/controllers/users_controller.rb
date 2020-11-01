@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   end
 
   def new
-    console
     @user = User.new
   end
 
